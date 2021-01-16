@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Salary predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+<style>
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+body{
+
+  background-color: hsla(89, 43%, 51%, 0.3);
+}
+label {
+    width:180px;
+    clear:left;
+    text-align:left;
+    padding-right:10px;
+}
+div.a {
+  font-size: 15px;
+}
+
+input, label {
+    float:left;
+}
+
+</style>
+  
+  
+</head>
+
+<body>
+ <div class="login">
+ 
+	<h1 style="text-align:center;color:red;background-color:powderblue;">Predict Car Price</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    <label for="year">Enter the year: </label>
+        <input id="first" name="Year" placeholder="Year" type="number ">
+	</br></br>
+
+        <label>Enter the Present price: </label>
+    	<input id="one" type="text" name="Present_Price" placeholder="Price" required="required" />
+	</br></br>
+
+        <label>Enter the kilometers driven: </label>  	
+    	<input id="two" type="text" name="Kms_Driven" placeholder="kilometers" required="required" />
+	</br></br>   	
+    	
+        <label>Enter the change in owners </label>
+    	<input id="three" type="text" name="Owner" placeholder="owner" required="required" />
+	</br></br>
+    
+        <label>Select the Fuel type: </label>       	
+    	<select id="four" name="Fuel_Type_Diesel">
+    	<option value="Petrol">Petrol</option>    	
+    	<option value="Diesel">Diesel</option>
+    	<option value="CNG">CNG</option>
+    	</select>
+	</br></br>
+    	
+        <label>Enter the type of seller: </label>
+    	<select id="five" name="Seller_Type_Individual">
+    	<option value="Dealer">Dealer</option>    	
+    	<option value="Individual">Individual</option>
+        </select>
+	</br></br>        
+        <label>Select the transmission type: </label>
+        
+        <select d="six" name="Transmission_Manual">
+        <option value="Manual">Manual car</option>
+        <option value="Automatic">Automatic car</option>
+        </select>
+	</br></br></br>
+        
+        
+        <button class="button" type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+    </form>
+
+   <br>
+   <br>
+   <h2>   {{ prediction_text }}</h2>
+
+ </div>
+
+
+</body>
+</html>
